@@ -15,6 +15,10 @@ $(document).ready(function(){
 
       });
       
+      if ( $('#js-modal-page').length === 0 ) { // just to avoid missing #js-modal-page
+         $( 'body' ).wrapInner('<div id="js-modal-page"></div>');
+      }
+      
       // events ------------------
       $( 'body' ).on( 'click', '.js-modal', function( event ) {
          var $this = $(this),
@@ -26,7 +30,7 @@ $(document).ready(function(){
              $modal_starter_id = $this.attr('id'),
              $modal_code,
              $modal_overlay,
-             $page = $('#page');
+             $page = $('#js-modal-page');
          
          if ( typeof $modal_text === "undefined" || $modal_text === "undefined" || $modal_text === "" ) {
                   $modal_text = '';
@@ -80,7 +84,7 @@ $(document).ready(function(){
       $( 'body' ).on( 'click', '#js-modal-close', function( event ) {
          var $this = $(this),
              $focus_back = '#' + $this.attr('data-focus-back'),
-             $page = $('#page');
+             $page = $('#js-modal-page');
              
          $page.removeAttr('aria-hidden');
          $('#js-modal').remove();
