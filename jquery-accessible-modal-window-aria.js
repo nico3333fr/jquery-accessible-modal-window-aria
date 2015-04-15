@@ -22,32 +22,17 @@ $(document).ready(function(){
       // events ------------------
       $( 'body' ).on( 'click', '.js-modal', function( event ) {
          var $this = $(this),
-             $modal_text = $this.attr('data-modal-text'),
-             $modal_content_id = '#' + $this.attr('data-modal-content-id'),
-             $modal_title = $this.attr('data-modal-title'),
-             $modal_close_text = $this.attr('data-modal-close-text'),
-             $modal_close_title = $this.attr('data-modal-close-title'),
+             options = $this.data(),
              $modal_starter_id = $this.attr('id'),
+             $modal_text = options.modalText || '',
+             $modal_content_id = typeof options.modalContentId !== 'undefined' ? '#' + options.modalContentId : '',
+             $modal_title = options.modalTitle || '',
+             $modal_close_text = options.modalCloseText || 'Close',
+             $modal_close_title = options.modalCloseTitle || options.modalCloseText,
              $modal_code,
              $modal_overlay,
              $page = $('#js-modal-page');
-         
-         if ( typeof $modal_text === "undefined" || $modal_text === "undefined" || $modal_text === "" ) {
-                  $modal_text = '';
-                  }
-         if ( typeof $modal_id === "undefined" || $modal_id === "undefined" || $modal_id === "" ) {
-                  $modal_id = '';
-                  }
-         if ( typeof $modal_title === "undefined" || $modal_title === "undefined" || $modal_title === "" ) {
-                  $modal_title = '';
-                  }
-         if ( typeof $modal_close_text === "undefined" || $modal_close_text === "undefined" || $modal_close_text === "" ) {
-                  $modal_close_text = 'Close';
-                  }
-         if ( typeof $modal_close_title === "undefined" || $modal_close_title === "undefined" || $modal_close_title === "" ) {
-                  $modal_close_title = $modal_close_text;
-                  }
-         
+
          // insert code at the end
          $modal_code = '<dialog id="js-modal" class="modal" role="dialog" aria-labelledby="modal-title"><div role="document">';
          $modal_code += '<button id="js-modal-close" class="modal-close" data-focus-back="' + $modal_starter_id + '" title="' + $modal_close_title + '">' + $modal_close_text + '</button>';
@@ -103,6 +88,35 @@ $(document).ready(function(){
          }
       })
       .on( "keydown", "#js-modal", function( event ) {
+         if ( event.keyCode == 27 ) { // esc
+             $('#js-modal-close').click();
+             event.preventDefault();
+         }
+         if ( event.keyCode == 9 ) { // tab or maj+tab
+
+            if ( !event.shiftKey && $( document.activeElement ).is( $('#js-modal-tabindex') ) ){
+                $('#js-modal-close').focus(); 
+                event.preventDefault();
+               }
+            if ( event.shiftKey &&  $( document.activeElement ).is( $('#js-modal-close') ) ){
+                $('#js-modal-tabindex').focus(); 
+                event.preventDefault();
+               }
+               
+           
+            }
+         
+      })
+      .on( 'focus', '#js-modal-tabindex', function( event ) {
+         $('#js-modal-close').focus(); 
+      });
+   
+   
+   }
+ 
+  
+});
+#js-modal", function( event ) {
          if ( event.keyCode == 27 ) { // esc
              $('#js-modal-close').click();
              event.preventDefault();
