@@ -1,6 +1,10 @@
 $(document).ready(function(){
 
-
+   /*
+    * jQuery simple and accessible modal window, using ARIA
+    * Website: http://a11y.nicolas-hoffmann.net/modal/
+    * License MIT: https://github.com/nico3333fr/jquery-accessible-modal-window-aria/blob/master/LICENSE
+    */
    // loading modal ------------------------------------------------------------------------------------------------------------
    
    // init
