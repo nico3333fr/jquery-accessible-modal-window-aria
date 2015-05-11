@@ -54,7 +54,7 @@ $(document).ready(function(){
                      $modal_code += $($modal_content_id).html();
                      }
                   }
-         //$modal_code += '<span id="js-modal-tabindex" tabindex="0"></span>';
+
          $modal_code += '</div></dialog>';
          
          $( $modal_code ).insertAfter($page);
@@ -142,7 +142,6 @@ $(document).ready(function(){
     
             // get the number of focusable items
             var numberOfFocusableItems = focusableItems.length;
-            //alert(numberOfFocusableItems);
             
             var focusedItemIndex = focusableItems.index(focusedItem);
 
