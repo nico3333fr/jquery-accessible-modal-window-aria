@@ -36,6 +36,7 @@ $(document).ready(function(){
              $modal_title = options.modalTitle || '',
              $modal_close_text = options.modalCloseText || 'Close',
              $modal_close_title = options.modalCloseTitle || options.modalCloseText,
+             $modal_background_click = options.modalBackgroundClick || '',
              $modal_code,
              $modal_overlay,
              $page = $('#js-modal-page');
@@ -62,12 +63,14 @@ $(document).ready(function(){
          $page.attr('aria-hidden', 'true');
          
          // add overlay
-         $modal_overlay = '<span id="js-modal-overlay" class="modal-overlay" title="' + $modal_close_title + '"><span class="invisible">Close modal</span></span>';
+         if ( $modal_background_click != 'disabled' ){
+            $modal_overlay = '<span id="js-modal-overlay" class="modal-overlay" title="' + $modal_close_title + '" data-background-click="enabled"><span class="invisible">Close modal</span></span>';
+            }
+            else { $modal_overlay = '<span id="js-modal-overlay" class="modal-overlay" data-background-click="disabled"></span>'; }
+         
          $( $modal_overlay ).insertAfter($('#js-modal'));
          
          $('#js-modal-close').focus();
-         
-         
          
          event.preventDefault();
          
@@ -91,12 +94,15 @@ $(document).ready(function(){
              $focus_back = '#' + $close.attr('data-focus-back'),
              $js_modal = $('#js-modal'),
              $js_modal_overlay = $('#js-modal-overlay'),
+             $modal_background_click = $js_modal_overlay.attr('data-background-click'),
              $page = $('#js-modal-page');
 
-         $page.removeAttr('aria-hidden');
-         $js_modal.remove();
-         $js_modal_overlay.remove();
-         $( $focus_back ).focus();
+         if ( $modal_background_click == 'enabled' ){
+             $page.removeAttr('aria-hidden');
+             $js_modal.remove();
+             $js_modal_overlay.remove();
+             $( $focus_back ).focus();
+            }
       })
       .on( 'keydown', '#js-modal-overlay', function( event ) {
          if ( event.keyCode == 13 || event.keyCode == 32 ) { // space or enter
@@ -105,12 +111,15 @@ $(document).ready(function(){
                  $focus_back = '#' + $close.attr('data-focus-back'),
                  $js_modal = $('#js-modal'),
                  $js_modal_overlay = $('#js-modal-overlay'),
+                 $modal_background_click = $js_modal_overlay.attr('data-background-click'),
                  $page = $('#js-modal-page');
-    
-             $page.removeAttr('aria-hidden');
-             $js_modal.remove();
-             $js_modal_overlay.remove();
-             $( $focus_back ).focus();
+
+             if ( $modal_background_click == 'enabled' ){
+                 $page.removeAttr('aria-hidden');
+                 $js_modal.remove();
+                 $js_modal_overlay.remove();
+                 $( $focus_back ).focus();
+                 }
 
          }
       })
