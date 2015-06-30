@@ -31,7 +31,7 @@ $(document).ready(function(){
          var $this = $(this),
              options = $this.data(),
              $modal_starter_id = $this.attr('id'),
-             $modal_prefix_classes = options.modalPrefixClass + '-' || '',
+             $modal_prefix_classes = typeof options.modalPrefixClass !== 'undefined' ? options.modalPrefixClass + '-' : '',
              $modal_text = options.modalText || '',
              $modal_content_id = typeof options.modalContentId !== 'undefined' ? '#' + options.modalContentId : '',
              $modal_title = options.modalTitle || '',
