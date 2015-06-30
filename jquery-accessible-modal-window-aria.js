@@ -31,6 +31,7 @@ $(document).ready(function(){
          var $this = $(this),
              options = $this.data(),
              $modal_starter_id = $this.attr('id'),
+             $modal_prefix_classes = options.modalPrefixClass + '-' || '',
              $modal_text = options.modalText || '',
              $modal_content_id = typeof options.modalContentId !== 'undefined' ? '#' + options.modalContentId : '',
              $modal_title = options.modalTitle || '',
@@ -42,10 +43,10 @@ $(document).ready(function(){
              $page = $('#js-modal-page');
          
          // insert code at the end
-         $modal_code = '<dialog id="js-modal" class="modal" role="dialog" aria-labelledby="modal-title"><div role="document">';
-         $modal_code += '<button id="js-modal-close" class="modal-close" data-focus-back="' + $modal_starter_id + '" title="' + $modal_close_title + '">' + $modal_close_text + '</button>';
+         $modal_code = '<dialog id="js-modal" class="' + $modal_prefix_classes + 'modal" role="dialog" aria-labelledby="modal-title"><div role="document">';
+         $modal_code += '<button id="js-modal-close" class="' + $modal_prefix_classes + 'modal-close" data-focus-back="' + $modal_starter_id + '" title="' + $modal_close_title + '">' + $modal_close_text + '</button>';
          if ($modal_title !== ''){
-            $modal_code += '<h1 id="modal-title" class="modal-title">' + $modal_title + '</h1>';
+            $modal_code += '<h1 id="modal-title" class="' + $modal_prefix_classes + 'modal-title">' + $modal_title + '</h1>';
             }
          if ($modal_text !== ''){
             $modal_code += '<p>' + $modal_text + '</p>';
@@ -64,9 +65,9 @@ $(document).ready(function(){
          
          // add overlay
          if ( $modal_background_click != 'disabled' ){
-            $modal_overlay = '<span id="js-modal-overlay" class="modal-overlay" title="' + $modal_close_title + '" data-background-click="enabled"><span class="invisible">Close modal</span></span>';
+            $modal_overlay = '<span id="js-modal-overlay" class="' + $modal_prefix_classes + 'modal-overlay" title="' + $modal_close_title + '" data-background-click="enabled"><span class="invisible">Close modal</span></span>';
             }
-            else { $modal_overlay = '<span id="js-modal-overlay" class="modal-overlay" data-background-click="disabled"></span>'; }
+            else { $modal_overlay = '<span id="js-modal-overlay" class="' + $modal_prefix_classes + 'modal-overlay" data-background-click="disabled"></span>'; }
          
          $( $modal_overlay ).insertAfter($('#js-modal'));
          
