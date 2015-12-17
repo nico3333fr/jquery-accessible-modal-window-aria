@@ -40,6 +40,7 @@ $(document).ready(function(){
              $modal_background_click = options.modalBackgroundClick || '',
              $modal_code,
              $modal_overlay,
+             $body = $('body');
              $page = $('#js-modal-page');
          
          // insert code at the end
@@ -60,6 +61,7 @@ $(document).ready(function(){
          $modal_code += '</div></dialog>';
          
          $( $modal_code ).insertAfter($page);
+         $body.addClass('no-scroll');
          
          $page.attr('aria-hidden', 'true');
          
@@ -82,9 +84,11 @@ $(document).ready(function(){
              $focus_back = '#' + $this.attr('data-focus-back'),
              $js_modal = $('#js-modal'),
              $js_modal_overlay = $('#js-modal-overlay'),
+             $body = $('body'),
              $page = $('#js-modal-page');
              
          $page.removeAttr('aria-hidden');
+         $body.removeClass('no-scroll');
          $js_modal.remove();
          $js_modal_overlay.remove();
          $( $focus_back ).focus();
@@ -96,10 +100,12 @@ $(document).ready(function(){
              $js_modal = $('#js-modal'),
              $js_modal_overlay = $('#js-modal-overlay'),
              $modal_background_click = $js_modal_overlay.attr('data-background-click'),
+             $body = $('body'),
              $page = $('#js-modal-page');
 
          if ( $modal_background_click == 'enabled' ){
              $page.removeAttr('aria-hidden');
+             $body.removeClass('no-scroll');
              $js_modal.remove();
              $js_modal_overlay.remove();
              $( $focus_back ).focus();
@@ -111,12 +117,14 @@ $(document).ready(function(){
              var $close = $('#js-modal-close'),
                  $focus_back = '#' + $close.attr('data-focus-back'),
                  $js_modal = $('#js-modal'),
+                 $body = $('body'),
                  $js_modal_overlay = $('#js-modal-overlay'),
                  $modal_background_click = $js_modal_overlay.attr('data-background-click'),
                  $page = $('#js-modal-page');
 
              if ( $modal_background_click == 'enabled' ){
                  $page.removeAttr('aria-hidden');
+                 $body.removeClass('no-scroll');
                  $js_modal.remove();
                  $js_modal_overlay.remove();
                  $( $focus_back ).focus();
@@ -131,10 +139,12 @@ $(document).ready(function(){
              var $close = $('#js-modal-close'),
                  $focus_back = '#' + $close.attr('data-focus-back'),
                  $js_modal = $('#js-modal'),
+                 $body = $('body')
                  $js_modal_overlay = $('#js-modal-overlay'),
                  $page = $('#js-modal-page');
     
              $page.removeAttr('aria-hidden');
+             $body.removeClass('no-scroll');
              $js_modal.remove();
              $js_modal_overlay.remove();
              $( $focus_back ).focus();
