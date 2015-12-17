@@ -2,11 +2,11 @@
 
 This jQuery plugin provides you a shiny and accessible modal window, using ARIA.
 
-A presentation page and demo is here: http://a11y.nicolas-hoffmann.net/modal/
+A presentation page and demo is here: http://a11y.nicolas-hoffmann.net/modal/ (with styles, etc.)
 
 ## How it works
 
-Basically, it wraps all the page into a <code>div id="js-modal-page"</code>, and when you activate one modal, the scripts inserts a <code>dialog</code> element at the end of your page, puts the focus into it and traps focus in the modal window. When you exit it, the focus is given back to the element that opened it.
+Basically, it wraps all the page into a <code>div id="js-modal-page"</code>, and when you activate one modal, the scripts inserts a <code>dialog</code> element at the end of your page, adds the classe noscroll on the body element (to remove scroll with CSS if needed), puts the focus into it and traps focus in the modal window. When you exit it, the focus is given back to the element that opened it.
 
 For mouse users, they can click outside the modal window to close it. For keyboard users, you can strike Esc to close it.
 
