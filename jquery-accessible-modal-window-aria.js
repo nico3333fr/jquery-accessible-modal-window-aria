@@ -8,8 +8,11 @@ $(document).ready(function(){
    // loading modal ------------------------------------------------------------------------------------------------------------
    
    // init
-   if ( $('.js-modal').length  ) { // if there are at least one :)
-      $('.js-modal' ).each( function(index_to_expand) {
+   var $modals = $( '.js-modal' ),
+       $body = $( 'body' );
+
+   if ( $modals.length  ) { // if there are at least one :)
+      $modals.each( function(index_to_expand) {
           var $this = $(this) ,
               index_lisible = index_to_expand+1;
           
@@ -23,11 +26,11 @@ $(document).ready(function(){
       var focusableElementsString = "a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]";
       
       if ( $('#js-modal-page').length === 0 ) { // just to avoid missing #js-modal-page
-         $( 'body' ).wrapInner('<div id="js-modal-page"></div>');
-      }
+         $body.wrapInner('<div id="js-modal-page"></div>');
+         }
       
       // events ------------------
-      $( 'body' ).on( 'click', '.js-modal', function( event ) {
+      $body.on( 'click', '.js-modal', function( event ) {
          var $this = $(this),
              options = $this.data(),
              $modal_starter_id = $this.attr('id'),
@@ -40,7 +43,6 @@ $(document).ready(function(){
              $modal_background_click = options.modalBackgroundClick || '',
              $modal_code,
              $modal_overlay,
-             $body = $('body');
              $page = $('#js-modal-page');
          
          // insert code at the end
@@ -79,12 +81,11 @@ $(document).ready(function(){
          
       })
       // close button and esc key
-      $( 'body' ).on( 'click', '#js-modal-close', function( event ) {
+      $body.on( 'click', '#js-modal-close', function( event ) {
          var $this = $(this),
              $focus_back = '#' + $this.attr('data-focus-back'),
              $js_modal = $('#js-modal'),
              $js_modal_overlay = $('#js-modal-overlay'),
-             $body = $('body'),
              $page = $('#js-modal-page');
              
          $page.removeAttr('aria-hidden');
@@ -95,60 +96,25 @@ $(document).ready(function(){
          
       })
       .on( 'click', '#js-modal-overlay', function( event ) {
-         var $close = $('#js-modal-close'),
-             $focus_back = '#' + $close.attr('data-focus-back'),
-             $js_modal = $('#js-modal'),
-             $js_modal_overlay = $('#js-modal-overlay'),
-             $modal_background_click = $js_modal_overlay.attr('data-background-click'),
-             $body = $('body'),
-             $page = $('#js-modal-page');
+         var $close = $('#js-modal-close');
 
-         if ( $modal_background_click == 'enabled' ){
-             $page.removeAttr('aria-hidden');
-             $body.removeClass('no-scroll');
-             $js_modal.remove();
-             $js_modal_overlay.remove();
-             $( $focus_back ).focus();
-            }
+         $close.trigger('click');
+		 
       })
       .on( 'keydown', '#js-modal-overlay', function( event ) {
-         if ( event.keyCode == 13 || event.keyCode == 32 ) { // space or enter
+          var $close = $('#js-modal-close');
 
-             var $close = $('#js-modal-close'),
-                 $focus_back = '#' + $close.attr('data-focus-back'),
-                 $js_modal = $('#js-modal'),
-                 $body = $('body'),
-                 $js_modal_overlay = $('#js-modal-overlay'),
-                 $modal_background_click = $js_modal_overlay.attr('data-background-click'),
-                 $page = $('#js-modal-page');
-
-             if ( $modal_background_click == 'enabled' ){
-                 $page.removeAttr('aria-hidden');
-                 $body.removeClass('no-scroll');
-                 $js_modal.remove();
-                 $js_modal_overlay.remove();
-                 $( $focus_back ).focus();
-                 }
-
-         }
+	      if ( event.keyCode == 13 || event.keyCode == 32 ) { // space or enter
+             $close.trigger('click');
+             }
       })
       .on( "keydown", "#js-modal", function( event ) {
-         var $this = $(this);
+         var $this = $(this),
+		     $close = $('#js-modal-close');
          
          if ( event.keyCode == 27 ) { // esc
-             var $close = $('#js-modal-close'),
-                 $focus_back = '#' + $close.attr('data-focus-back'),
-                 $js_modal = $('#js-modal'),
-                 $body = $('body')
-                 $js_modal_overlay = $('#js-modal-overlay'),
-                 $page = $('#js-modal-page');
-    
-             $page.removeAttr('aria-hidden');
-             $body.removeClass('no-scroll');
-             $js_modal.remove();
-             $js_modal_overlay.remove();
-             $( $focus_back ).focus();
-         }
+             $close.trigger('click');
+            }
          if ( event.keyCode == 9 ) { // tab or maj+tab
 
             // get list of all children elements in given object
@@ -179,7 +145,7 @@ $(document).ready(function(){
          
       })
       .on( 'focus', '#js-modal-tabindex', function( event ) {
-         $('#js-modal-close').focus(); 
+         $close.focus(); 
       });
    
    
