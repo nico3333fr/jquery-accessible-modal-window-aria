@@ -126,13 +126,13 @@ $(document).ready(function(){
           var $close = $('#js-modal-close');
 
           if ( event.keyCode == 13 || event.keyCode == 32 ) { // space or enter
-		          event.preventDefault();
+              event.preventDefault();
               $close.trigger('click');
               }
    })
    .on( "keydown", "#js-modal", function( event ) {
          var $this = $(this),
-		     $close = $('#js-modal-close');
+             $close = $('#js-modal-close');
          
          if ( event.keyCode == 27 ) { // esc
              $close.trigger('click');
