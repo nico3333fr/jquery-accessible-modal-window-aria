@@ -28,3 +28,44 @@ Enjoy.
 <img src="http://www.nicolas-hoffmann.net/bordel/chuck-norris1.jpg" alt="Chuck Norris approved this" />
 
 P.S: this plugin is in [MIT license](https://github.com/nico3333fr/jquery-accessible-modal-window-aria/blob/master/LICENSE). It couldn't be done without the precious help of @ScreenFeedFr, @sophieschuermans, @johan_ramon, @goetsu and @romaingervois.
+
+
+# Vanilla JS version
+
+Similar version as above but without any jQuery dependency.
+
+## Differences
+
+- page content is not wrapped but every ``body > *`` element is deactivated when dialog is open
+- dialog is reused and only deactivated if closed
+- ``js-modal`` elements are not automatically activated as modals (see next)
+- uses ``a[href=#...]`` if available as modalContentId
+- in addition to ``data-model-...`` options added programmatic option
+
+    // inits all js-modal elements and use data-attributes as jQuery Version
+    jsModal('.js-modal')
+
+    // or add options as api fields
+    jsModal({
+      selector: '.api-js-modal-button',
+      modalCloseText: 'CLOSE IT! API button',
+      modalCloseTitle: 'CLOSE IT Title',
+      modalTitle: 'Title:',
+      modalContentId: 'content_id' // explicit id
+    })
+
+    // minimal setup, uses href hash of link as modalContentId
+    jsModal({
+      selector: '.api-js-modal-a'
+    })
+
+
+
+## Styling
+
+Body elements gets a ``jsmodal-open`` class when dialog is opened. This way you can style dialog and content overlay to open with e.g. transitions etc.
+
+See vanilla.html for an example.
+
+
+

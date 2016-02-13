@@ -1,6 +1,8 @@
 /*
  * Vanilla JS simple and accessible modal window, using ARIA
  * based on http://a11y.nicolas-hoffmann.net/modal/
+ *
+ * Author: https://github.com/cthedot/
  */
 
 ; (function (global) {
