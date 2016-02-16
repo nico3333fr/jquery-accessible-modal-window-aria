@@ -59,7 +59,7 @@
   }
 
 
-  var focusableElementsSelector = "a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable], '[tabindex]:not([tabindex="-1"])'";
+  var focusableElementsSelector = "a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable], '[tabindex]:not([tabindex=\"-1\"])'";
 
   function _bodyKeyDownHandler(e) {
 
