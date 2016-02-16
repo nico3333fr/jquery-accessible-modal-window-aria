@@ -149,7 +149,14 @@
       $content.innerHTML = '<p>' + options.modalText + '</p>'
     }
 
+    if (options.position) {
+      $dialog.classList.add('jsModal-positioned')
+      $dialog.style.left = e.clientX + 'px'
+      $dialog.style.top = e.clientY + 'px'
+    }
+
     _toggle(true)
+    e.preventDefault()
     e.stopPropagation()
   }
 
@@ -159,7 +166,7 @@
 
     if (typeof options === 'string') {
       selector = options
-      options = false
+      options = {}
     }
     else {
       idCount += 1
