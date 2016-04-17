@@ -35,7 +35,8 @@ $(document).ready(function(){
              $modal_starter_id = $this.attr('id'),
              $modal_prefix_classes = typeof options.modalPrefixClass !== 'undefined' ? options.modalPrefixClass + '-' : '',
              $modal_text = options.modalText || '',
-             $modal_content_id = typeof options.modalContentId !== 'undefined' ? '#' + options.modalContentId : '',
+             modal_content_id = typeof options.modalContentId !== 'undefined' ? options.modalContentId : '',
+             $modal_content = $('#' + modal_content_id),
              $modal_title = options.modalTitle || '',
              $modal_close_text = options.modalCloseText || 'Close',
              $modal_close_title = options.modalCloseTitle || options.modalCloseText,
@@ -46,19 +47,23 @@ $(document).ready(function(){
          
          // insert code at the end
          $modal_code = '<dialog id="js-modal" class="' + $modal_prefix_classes + 'modal" role="dialog" aria-labelledby="modal-title"><div role="document">';
-         $modal_code += '<button id="js-modal-close" class="' + $modal_prefix_classes + 'modal-close" data-focus-back="' + $modal_starter_id + '" title="' + $modal_close_title + '">' + $modal_close_text + '</button>';
+         $modal_code += '<button id="js-modal-close" class="' + $modal_prefix_classes + 'modal-close" data-content-back-id="' + modal_content_id + '" data-focus-back="' + $modal_starter_id + '" title="' + $modal_close_title + '">' + $modal_close_text + '</button>';
          if ($modal_title !== ''){
             $modal_code += '<h1 id="modal-title" class="' + $modal_prefix_classes + 'modal-title">' + $modal_title + '</h1>';
             }
+         
          if ($modal_text !== ''){
             $modal_code += '<p>' + $modal_text + '</p>';
             }
             else {
-                  if ($modal_content_id !== '' && $($modal_content_id).length  ){
-                     $modal_code += $($modal_content_id).html();
+                  if (modal_content_id !== '' && $modal_content.length ){
+                     //var $modal_content_id = $('#' + $modal_content_id);
+                     $modal_code += '<div id="js-modal-content">';
+                     $modal_code += $modal_content.html();
+                     $modal_code += '</div>';
+                     $modal_content.empty();
                      }
                   }
-
          $modal_code += '</div></dialog>';
          
          $( $modal_code ).insertAfter($page);
@@ -83,7 +88,9 @@ $(document).ready(function(){
    $body.on( 'click', '#js-modal-close', function( event ) {
          var $this = $(this),
              $focus_back = '#' + $this.attr('data-focus-back'),
+             $content_back_id = $this.attr('data-content-back-id'),
              $js_modal = $('#js-modal'),
+             $js_modal_content = $('#js-modal-content'),
              $class_element = $js_modal.attr('class'),
              $class_element_reverse = $class_element + '--reverse',
              $js_modal_overlay = $('#js-modal-overlay'),
@@ -92,6 +99,7 @@ $(document).ready(function(){
          $page.removeAttr('aria-hidden');
 
          var delay = $js_modal.css( "animation-duration" );
+         //alert(delay);
          if ( delay != '0s' ){
              var timeout = parseFloat(delay.replace('s','')) * 1000;
              timeout++;
@@ -102,6 +110,9 @@ $(document).ready(function(){
                   $body.removeClass('no-scroll');
                   $js_modal.remove();
                   $js_modal_overlay.remove();
+                  if ($content_back_id !== ''){
+                     $('#' + $content_back_id).html( $js_modal_content.html() ); 
+                     }
                   $( $focus_back ).focus();	
                   $js_modal.removeClass( $class_element_reverse );
                   $js_modal.addClass( $class_element );
@@ -111,7 +122,10 @@ $(document).ready(function(){
                   $body.removeClass('no-scroll');
                   $js_modal.remove();
                   $js_modal_overlay.remove();
-                  $( $focus_back ).focus();			
+                  if ($content_back_id !== ''){
+                     $('#' + $content_back_id).html( $js_modal_content.html() ); 
+                     }
+                  $( $focus_back ).focus();
                  }
      
    })
