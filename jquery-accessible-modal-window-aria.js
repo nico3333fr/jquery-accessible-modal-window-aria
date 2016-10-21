@@ -184,7 +184,7 @@ $(document).ready(function(){
           var $this = $(this),
               $js_modal = $('#js-modal'),
               focusedItem = $( document.activeElement ),
-              in_jsmodal = focusedItem.parents('#js-modal').length ? true : false;
+              in_jsmodal = focusedItem.parents('#js-modal').length ? true : false,
               $close = $('#js-modal-close');
           
           if ( $js_modal.length && event.keyCode == 9 && in_jsmodal === false ) { // tab or maj+tab
