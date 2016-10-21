@@ -3,14 +3,14 @@
   "description": "This jQuery plugin provides a shiny and accessible modal window, using ARIA",
   "homepage": "http://a11y.nicolas-hoffmann.net/modal/",
   "main": "jquery-accessible-modal-window-aria.js",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "keywords": [
     "Accessibility",
     "ARIA",
     "modal",
-	"modal window",
+    "modal window",
     "a11y",
-	"jQueryPlugin"
+    "jQueryPlugin"
   ],
   "authors": [
     {
