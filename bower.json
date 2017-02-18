@@ -1,9 +1,9 @@
 {
   "name": "jquery-accessible-modal-window-aria",
   "description": "This jQuery plugin provides a shiny and accessible modal window, using ARIA",
-  "homepage": "http://a11y.nicolas-hoffmann.net/modal/",
+  "homepage": "https://a11y.nicolas-hoffmann.net/modal/",
   "main": "jquery-accessible-modal-window-aria.js",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "keywords": [
     "Accessibility",
     "ARIA",
@@ -16,7 +16,7 @@
     {
       "name": "Nicolas Hoffmann",
       "email": "dante3333@gmail.com",
-      "web": "http://www.nicolas-hoffmann.net/"
+      "web": "https://www.nicolas-hoffmann.net/"
     }
   ],
   "dependencies": {
