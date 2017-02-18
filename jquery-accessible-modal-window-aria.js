@@ -1,7 +1,8 @@
-$(document).ready(function(){
+jQuery(document).ready(function($){
 
    /*
     * jQuery simple and accessible modal window, using ARIA
+    * @version v1.6.1
     * Website: http://a11y.nicolas-hoffmann.net/modal/
     * License MIT: https://github.com/nico3333fr/jquery-accessible-modal-window-aria/blob/master/LICENSE
     */
