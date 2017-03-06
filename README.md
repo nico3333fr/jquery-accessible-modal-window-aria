@@ -2,7 +2,7 @@
 
 This jQuery plugin provides you a shiny and accessible modal window, using ARIA.
 
-A presentation page and demo is here: http://a11y.nicolas-hoffmann.net/modal/ (with styles, etc.)
+A presentation page and demo is here: https://a11y.nicolas-hoffmann.net/modal/ (with styles, etc.)
 
 ## How it works
 
@@ -25,6 +25,6 @@ Simply put class="js-modal" on a button or a link to activate the script.
 
 Enjoy.
 
-<img src="http://www.nicolas-hoffmann.net/bordel/chuck-norris1.jpg" alt="Chuck Norris approved this" />
+<img src="https://www.nicolas-hoffmann.net/bordel/chuck-norris1.jpg" alt="Chuck Norris approved this" />
 
 P.S: this plugin is in [MIT license](https://github.com/nico3333fr/jquery-accessible-modal-window-aria/blob/master/LICENSE). It couldn't be done without the precious help of @ScreenFeedFr, @sophieschuermans, @johan_ramon, @goetsu and @romaingervois.
