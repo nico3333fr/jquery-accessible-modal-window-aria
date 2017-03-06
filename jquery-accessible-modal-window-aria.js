@@ -2,8 +2,8 @@ jQuery(document).ready(function($){
 
    /*
     * jQuery simple and accessible modal window, using ARIA
-    * @version v1.6.1
-    * Website: http://a11y.nicolas-hoffmann.net/modal/
+    * @version v1.6.2
+    * Website: https://a11y.nicolas-hoffmann.net/modal/
     * License MIT: https://github.com/nico3333fr/jquery-accessible-modal-window-aria/blob/master/LICENSE
     */
    // loading modal ------------------------------------------------------------------------------------------------------------
@@ -48,7 +48,7 @@ jQuery(document).ready(function($){
          
          // insert code at the end
          $modal_code = '<dialog id="js-modal" class="' + $modal_prefix_classes + 'modal" role="dialog" aria-labelledby="modal-title" open><div role="document">';
-         $modal_code += '<button id="js-modal-close" class="' + $modal_prefix_classes + 'modal-close" data-content-back-id="' + modal_content_id + '" data-focus-back="' + $modal_starter_id + '" title="' + $modal_close_title + '"><span class="' + $modal_prefix_classes + 'modal-close__text">' + $modal_close_text + '</span></button>';
+         $modal_code += '<button type="button" id="js-modal-close" class="' + $modal_prefix_classes + 'modal-close" data-content-back-id="' + modal_content_id + '" data-focus-back="' + $modal_starter_id + '" title="' + $modal_close_title + '"><span class="' + $modal_prefix_classes + 'modal-close__text">' + $modal_close_text + '</span></button>';
          if ($modal_title !== ''){
             $modal_code += '<h1 id="modal-title" class="' + $modal_prefix_classes + 'modal-title">' + $modal_title + '</h1>';
             }
