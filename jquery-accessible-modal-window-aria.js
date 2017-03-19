@@ -2,7 +2,7 @@ jQuery(document).ready(function($){
 
    /*
     * jQuery simple and accessible modal window, using ARIA
-    * @version v1.6.2
+    * @version v1.7.0
     * Website: https://a11y.nicolas-hoffmann.net/modal/
     * License MIT: https://github.com/nico3333fr/jquery-accessible-modal-window-aria/blob/master/LICENSE
     */
@@ -41,6 +41,7 @@ jQuery(document).ready(function($){
              $modal_title = options.modalTitle || '',
              $modal_close_text = options.modalCloseText || 'Close',
              $modal_close_title = options.modalCloseTitle || options.modalCloseText,
+             $modal_close_img = options.modalCloseImg || '',
              $modal_background_click = options.modalBackgroundClick || '',
              $modal_code,
              $modal_overlay,
@@ -48,7 +49,13 @@ jQuery(document).ready(function($){
          
          // insert code at the end
          $modal_code = '<dialog id="js-modal" class="' + $modal_prefix_classes + 'modal" role="dialog" aria-labelledby="modal-title" open><div role="document">';
-         $modal_code += '<button type="button" id="js-modal-close" class="' + $modal_prefix_classes + 'modal-close" data-content-back-id="' + modal_content_id + '" data-focus-back="' + $modal_starter_id + '" title="' + $modal_close_title + '"><span class="' + $modal_prefix_classes + 'modal-close__text">' + $modal_close_text + '</span></button>';
+         $modal_code += '<button type="button" id="js-modal-close" class="' + $modal_prefix_classes + 'modal-close" data-content-back-id="' + modal_content_id + '" data-focus-back="' + $modal_starter_id + '" title="' + $modal_close_title + '">';
+         if ( $modal_close_img !== '' ){
+            $modal_code += '<img src="' + $modal_close_img + '" alt="' + $modal_close_text + '" class="' + $modal_prefix_classes + 'modal__closeimg" />';
+         }
+         else { $modal_code += '<span class="' + $modal_prefix_classes + 'modal-close__text">' + $modal_close_text + '</span>'; }
+         $modal_code += '</button>';
+         $modal_code += '<div class="' + $modal_prefix_classes + 'modal__content">';
          if ($modal_title !== ''){
             $modal_code += '<h1 id="modal-title" class="' + $modal_prefix_classes + 'modal-title">' + $modal_title + '</h1>';
             }
@@ -65,7 +72,7 @@ jQuery(document).ready(function($){
                      $modal_content.empty();
                      }
                   }
-         $modal_code += '</div></dialog>';
+         $modal_code += '</div></div></dialog>';
          
          $( $modal_code ).insertAfter($page);
          $body.addClass('no-scroll');
