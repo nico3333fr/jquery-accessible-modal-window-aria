@@ -37,7 +37,7 @@ jQuery(document).ready(function($){
              $modal_prefix_classes = typeof options.modalPrefixClass !== 'undefined' ? options.modalPrefixClass + '-' : '',
              $modal_text = options.modalText || '',
              modal_content_id = typeof options.modalContentId !== 'undefined' ? options.modalContentId : '',
-             $modal_content = $('#' + modal_content_id),
+             $modal_content = typeof options.modalContentId !== 'undefined' ? $('#' + modal_content_id) : '',
              $modal_title = options.modalTitle || '',
              $modal_close_text = options.modalCloseText || 'Close',
              $modal_close_title = options.modalCloseTitle || options.modalCloseText,
