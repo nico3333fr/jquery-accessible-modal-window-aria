@@ -2,7 +2,7 @@ jQuery(document).ready(function($){
 
    /*
     * jQuery simple and accessible modal window, using ARIA
-    * @version v1.7.1
+    * @version v1.7.2
     * Website: https://a11y.nicolas-hoffmann.net/modal/
     * License MIT: https://github.com/nico3333fr/jquery-accessible-modal-window-aria/blob/master/LICENSE
     */
@@ -48,7 +48,7 @@ jQuery(document).ready(function($){
              $page = $('#js-modal-page');
          
          // insert code at the end
-         $modal_code = '<dialog id="js-modal" class="' + $modal_prefix_classes + 'modal" role="dialog" aria-labelledby="modal-title" open><div role="document">';
+         $modal_code = '<dialog id="js-modal" class="' + $modal_prefix_classes + 'modal" role="dialog" aria-labelledby="modal-title" open aria-modal="true"><div role="document">';
          $modal_code += '<button type="button" id="js-modal-close" class="' + $modal_prefix_classes + 'modal-close" data-content-back-id="' + modal_content_id + '" data-focus-back="' + $modal_starter_id + '" title="' + $modal_close_title + '">';
          if ( $modal_close_img !== '' ){
             $modal_code += '<img src="' + $modal_close_img + '" alt="' + $modal_close_text + '" class="' + $modal_prefix_classes + 'modal__closeimg" />';
