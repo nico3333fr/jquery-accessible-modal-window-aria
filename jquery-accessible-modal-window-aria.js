@@ -81,7 +81,7 @@ jQuery(document).ready(function($) {
 
         // add overlay
         if ($modal_background_click != 'disabled') {
-            $modal_overlay = '<span id="js-modal-overlay" class="' + $modal_prefix_classes + 'modal-overlay" title="' + $modal_close_title + '" data-background-click="enabled"><span class="invisible">Close modal</span></span>';
+            $modal_overlay = '<span id="js-modal-overlay" class="' + $modal_prefix_classes + 'modal-overlay" title="' + $modal_close_title + '" data-background-click="enabled"><span class="invisible">' + $modal_close_text + '</span></span>';
         } else {
             $modal_overlay = '<span id="js-modal-overlay" class="' + $modal_prefix_classes + 'modal-overlay" data-background-click="disabled"></span>';
         }
