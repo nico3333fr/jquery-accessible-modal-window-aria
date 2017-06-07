@@ -2,7 +2,7 @@ jQuery(document).ready(function($) {
 
     /*
      * jQuery simple and accessible modal window, using ARIA
-     * @version v1.7.4
+     * @version v1.7.5
      * Website: https://a11y.nicolas-hoffmann.net/modal/
      * License MIT: https://github.com/nico3333fr/jquery-accessible-modal-window-aria/blob/master/LICENSE
      */
@@ -17,7 +17,8 @@ jQuery(document).ready(function($) {
             index_lisible = index_to_expand + 1;
 
         $this.attr({
-            'id': 'label_modal_' + index_lisible
+            'id': 'label_modal_' + index_lisible,
+            'aria-haspopup' : 'dialog'
         });
 
     });
