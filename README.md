@@ -23,6 +23,7 @@ Simply put class="js-modal" on a button or a link to activate the script.
 - Attribute <code>data-modal-close-title</code>: the title attribute of the close button in your modal window.
 - Attribute <code>data-modal-background-click="disabled"</code>: disable the possibility to click outside the modal window to close it.
 - Attribute <code>data-modal-close-img</code>: a path to a valid image for the close button.
+- Attribute <code>data-modal-focus-id</code>: when opening a modal, provides focus to the matching <code>id</code> (see [example on “It’s free” button](https://a11y.nicolas-hoffmann.net/modal/)).</li>
 
 Enjoy.
 
