@@ -2,7 +2,7 @@ jQuery(document).ready(function($) {
 
     /*
      * jQuery simple and accessible modal window, using ARIA
-     * @version v1.7.5
+     * @version v1.8.0
      * Website: https://a11y.nicolas-hoffmann.net/modal/
      * License MIT: https://github.com/nico3333fr/jquery-accessible-modal-window-aria/blob/master/LICENSE
      */
@@ -18,7 +18,7 @@ jQuery(document).ready(function($) {
 
         $this.attr({
             'id': 'label_modal_' + index_lisible,
-            'aria-haspopup' : 'dialog'
+            'aria-haspopup': 'dialog'
         });
 
     });
@@ -44,6 +44,7 @@ jQuery(document).ready(function($) {
             $modal_close_title = options.modalCloseTitle || options.modalCloseText,
             $modal_close_img = options.modalCloseImg || '',
             $modal_background_click = options.modalBackgroundClick || '',
+            $modal_focus_id = options.modalFocusId || '',
             $modal_code,
             $modal_overlay,
             $page = $('#js-modal-page');
@@ -81,7 +82,7 @@ jQuery(document).ready(function($) {
         $page.attr('aria-hidden', 'true');
 
         // add overlay
-        if ($modal_background_click != 'disabled') {
+        if ($modal_background_click !== 'disabled') {
             $modal_overlay = '<span id="js-modal-overlay" class="' + $modal_prefix_classes + 'modal-overlay" title="' + $modal_close_title + '" data-background-click="enabled"><span class="invisible">' + $modal_close_text + '</span></span>';
         } else {
             $modal_overlay = '<span id="js-modal-overlay" class="' + $modal_prefix_classes + 'modal-overlay" data-background-click="disabled"></span>';
@@ -89,7 +90,12 @@ jQuery(document).ready(function($) {
 
         $($modal_overlay).insertAfter($('#js-modal'));
 
-        $('#js-modal-close').focus();
+        if ($modal_focus_id !== '') {
+            $('#' + $modal_focus_id).focus();
+        } else {
+            $('#js-modal-close').focus();
+        }
+
 
         event.preventDefault();
 
