@@ -2,7 +2,7 @@ jQuery(document).ready(function($) {
 
     /*
      * jQuery simple and accessible modal window, using ARIA
-     * @version v1.8.2
+     * @version v1.9.0
      * Website: https://a11y.nicolas-hoffmann.net/modal/
      * License MIT: https://github.com/nico3333fr/jquery-accessible-modal-window-aria/blob/master/LICENSE
      */
@@ -45,12 +45,16 @@ jQuery(document).ready(function($) {
             $modal_close_img = options.modalCloseImg || '',
             $modal_background_click = options.modalBackgroundClick || '',
             $modal_focus_id = options.modalFocusId || '',
+            $modal_aria = typeof options.modalAriaModal !== 'undefined' ? 'aria-modal="true"' : '',
+            $modal_role_alertdialog = typeof options.modalUseRoleAlertdialog !== 'undefined' ? 'role="alertdialog"' : '',
+            $modal_role_dialog = typeof options.modalRemoveRoleDialog !== 'undefined' || $modal_role_alertdialog === 'role="alertdialog"' ? '' : 'role="dialog"',
+            $modal_tag = typeof options.modalRemoveDialogTag !== 'undefined' ? 'div' : 'dialog',
             $modal_code,
             $modal_overlay,
             $page = $('#js-modal-page');
 
         // insert code at the end
-        $modal_code = '<dialog id="js-modal" class="' + $modal_prefix_classes + 'modal" aria-labelledby="modal-title" open aria-modal="true"><div role="document">';
+        $modal_code = '<' + $modal_tag + ' ' + $modal_role_dialog + ' ' + $modal_role_alertdialog + ' id="js-modal" class="' + $modal_prefix_classes + 'modal" aria-labelledby="modal-title" open ' + $modal_aria + '><div role="document">';
         $modal_code += '<button type="button" id="js-modal-close" class="' + $modal_prefix_classes + 'modal-close" data-content-back-id="' + modal_content_id + '" data-focus-back="' + $modal_starter_id + '" title="' + $modal_close_title + '">';
         if ($modal_close_img !== '') {
             $modal_code += '<img src="' + $modal_close_img + '" alt="' + $modal_close_text + '" class="' + $modal_prefix_classes + 'modal__closeimg" />';
@@ -74,7 +78,7 @@ jQuery(document).ready(function($) {
                 $modal_content.empty();
             }
         }
-        $modal_code += '</div></div></dialog>';
+        $modal_code += '</div></div></' + $modal_tag + '>';
 
         $($modal_code).insertAfter($page);
         $body.addClass('no-scroll');
