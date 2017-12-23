@@ -2,7 +2,7 @@ jQuery(document).ready(function($) {
 
     /*
      * jQuery simple and accessible modal window, using ARIA
-     * @version v1.9.0
+     * @version v1.9.1
      * Website: https://a11y.nicolas-hoffmann.net/modal/
      * License MIT: https://github.com/nico3333fr/jquery-accessible-modal-window-aria/blob/master/LICENSE
      */
@@ -151,6 +151,13 @@ jQuery(document).ready(function($) {
 
         })
         .on('click', '#js-modal-overlay', function(event) {
+            var $close = $('#js-modal-close');
+
+            event.preventDefault();
+            $close.trigger('click');
+
+        })
+        .on('click', '.js-modal-close', function(event) {
             var $close = $('#js-modal-close');
 
             event.preventDefault();

@@ -2,7 +2,7 @@
   "title": "jQuery simple and accessible modal window, using ARIA",
   "name": "jquery-accessible-modal-window-aria",
   "description": "This jQuery plugin will add a shiny and accessible modal window, using ARIA",
-  "version": "1.9.0",
+  "version": "1.9.1",
   "main": "jquery-accessible-modal-window-aria.js",
   "keywords": [
     "Accessibility",

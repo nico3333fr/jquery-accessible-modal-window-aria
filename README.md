@@ -29,6 +29,8 @@ Simply put class="js-modal" on a button or a link to activate the script.
 - Attribute <code>data-modal-use-role-alertdialog</code>: instructs the modal to use <code>role="alertdialog"</code>.
 - Attribute <code>data-modal-remove-dialog-tag</code>: instructs the modal to use <code>div</code> instead of using <code>dialog</code> tag.
 
+If you need to close it, add `class="js-modal-close"` on an element in the modal content, it will trigger a click on close button.
+
 Enjoy.
 
 <img src="https://www.nicolas-hoffmann.net/bordel/chuck-norris1.jpg" alt="Chuck Norris approved this" />
