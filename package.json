@@ -2,7 +2,7 @@
   "title": "jQuery simple and accessible modal window, using ARIA",
   "name": "jquery-accessible-modal-window-aria",
   "description": "This jQuery plugin will add a shiny and accessible modal window, using ARIA",
-  "version": "1.9.1",
+  "version": "1.9.2",
   "main": "jquery-accessible-modal-window-aria.js",
   "keywords": [
     "Accessibility",
@@ -30,11 +30,6 @@
       "url": "https://github.com/nico3333fr/jquery-accessible-modal-window-aria.git"
     }
   ],
-  "licenses": [
-    {
-      "name": "MIT",
-      "url": "https://github.com/nico3333fr/jquery-accessible-tabs-aria/blob/master/LICENSE"
-    }
-  ],
+  "license": "MIT",
   "homepage": "https://a11y.nicolas-hoffmann.net/modal/"
 }
