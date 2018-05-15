@@ -2,7 +2,7 @@ jQuery(document).ready(function($) {
 
     /*
      * jQuery simple and accessible modal window, using ARIA
-     * @version v1.10.0
+     * @version v1.11.0
      * Website: https://a11y.nicolas-hoffmann.net/modal/
      * License MIT: https://github.com/nico3333fr/jquery-accessible-modal-window-aria/blob/master/LICENSE
      */
@@ -71,16 +71,16 @@ jQuery(document).ready(function($) {
             $modal_code += '<p>' + $modal_text + '</p>';
         } else {
             if (modal_content_id !== '' && $modal_content.length) {
-                //var $modal_content_id = $('#' + $modal_content_id);
                 $modal_code += '<div id="js-modal-content">';
-                $modal_code += $modal_content.html();
                 $modal_code += '</div>';
-                $modal_content.empty();
             }
         }
         $modal_code += '</div></div></' + $modal_tag + '>';
 
         $($modal_code).insertAfter($page);
+        if (modal_content_id !== '' && $modal_content.length) {
+            $($modal_content).children().appendTo('#js-modal-content');
+        }
         $body.addClass('no-scroll');
 
         $page.attr('aria-hidden', 'true');
@@ -130,22 +130,22 @@ jQuery(document).ready(function($) {
                 }, 1);
                 setTimeout(function() {
                     $body.removeClass('no-scroll');
+                    if ($content_back_id !== '') {
+                        $js_modal_content.children().appendTo('#' + $content_back_id);
+                    }
                     $js_modal.remove();
                     $js_modal_overlay.remove();
-                    if ($content_back_id !== '') {
-                        $('#' + $content_back_id).html($js_modal_content.html());
-                    }
                     $($focus_back).focus();
                     $js_modal.removeClass($class_element_reverse);
                     $js_modal.addClass($class_element);
                 }, timeout);
             } else {
                 $body.removeClass('no-scroll');
+                if ($content_back_id !== '') {
+                    $js_modal_content.children().appendTo('#' + $content_back_id);
+                }
                 $js_modal.remove();
                 $js_modal_overlay.remove();
-                if ($content_back_id !== '') {
-                    $('#' + $content_back_id).html($js_modal_content.html());
-                }
                 $($focus_back).focus();
             }
 
