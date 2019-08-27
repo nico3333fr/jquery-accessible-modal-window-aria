@@ -24,7 +24,7 @@ jQuery(document).ready(function($) {
     });
 
     // jQuery formatted selector to search for focusable items
-    var focusableElementsString = "a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]";
+    var focusableElementsString = "a[href], area[href], input:not([type='hidden']):not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]";
 
     if ($('#js-modal-page').length === 0) { // just to avoid missing #js-modal-page
         $body.wrapInner('<div id="js-modal-page"></div>');
