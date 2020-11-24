@@ -160,7 +160,6 @@ jQuery(document).ready(function($) {
         .on('click', '.js-modal-close', function(event) {
             var $close = $('#js-modal-close');
 
-            event.preventDefault();
             $close.trigger('click');
 
         })
