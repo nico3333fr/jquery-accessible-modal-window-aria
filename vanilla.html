@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Example vanilla modal</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <style>
+    /* modal styles for overlay and dialog */
+    .jsmodal-overlay {
+      position: fixed;
+      z-index: 666;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.5);
+      transition: 0.2s opacity;
+    }
+    .jsmodal-dialog {
+      display: block;
+      position: fixed;
+      z-index: 667;
+      position: fixed;
+      left: 0;
+      right: 0;
+      top: 25%;
+      width: 50%;
+      margin: 0 auto;
+      border: 1px solid #000;
+      background: #fff;
+      padding: 2em;
+      transform: scale(0.75);
+      transition: 0.2s opacity, 0.1s transform;
+    }
+    .jsModal-positioned {
+      /* at click position */
+      margin: -2em auto auto -2em;
+    }
+    .jsmodal-overlay,
+    .jsmodal-dialog {
+      pointer-events: none;
+      opacity: 0;
+    }
+    .jsmodal-open .jsmodal-overlay,
+    .jsmodal-open .jsmodal-dialog {
+      pointer-events: all;
+      opacity: 1.0;
+      transform: scale(1.0);
+    }
+    /* jsmodal-open is set on body to enable transitions on dialog + overlay */
+    .jsmodal-open {
+      overflow: hidden;
+    }
+
+
+    /* some demo styling */
+    body {
+      font: 1em sans-serif;
+    }
+    *:focus {
+      outline: 5px solid red;
+    }
+
+  </style>
+</head>
+
+<body role="document">
+  <div id="page">
+    <h1>Modal on a link/button (Vanilla JS with <code>data-</code> or programmatic API)</h1>
+
+    <p><a href="#" class="js-modal" data-modal-text="hello world !" data-modal-title="Here a title" data-modal-close-text="Close"
+      data-modal-close-title="Close this window">Modal with content in data attributes only</a></p>
+    <p>Example of
+      <button class="js-modal" data-modal-content-id="content_id" data-modal-title="Here another title" data-modal-close-text="Close it"
+      data-modal-close-title="Close this window, really">Modal with #content-id</button>
+    </p>
+
+    <p>Modal with
+      <a href="#content_id" class="api-js-modal-a">link to Content</a>
+    </p>
+
+    <p>Modal with
+      <button class="api-js-modal-button">button and programmatic content</button>
+    </p>
+
+    <p>Modal
+      <a href="#content_id" class="api-js-modal-pos">positioned @ click</a>
+    </p>
+
+    <p>here another content.</p>
+    <p>here another <b>content</b> with <a href="#out">a link without modal</a>.</p>
+
+    <hr>
+    <div id="content_id">
+      <h2>referenced #content-id</h2>
+      some focussable items <a href="#">voir</a>
+      <div><button>button</button> <input type="hidden"> <input> ?</div>
+    </div>
+
+    <p>more content so scroll</p>
+    <p>more content so scroll</p>
+    <p>more content so scroll</p>
+    <p>more content so scroll</p>
+    <p>more content so scroll</p>
+    <p>more content so scroll</p>
+    <p>more content so scroll</p>
+    <p>more content so scroll</p>
+    <p>more content so scroll1</p>
+    <p>more content so scroll</p>
+    <p>more content so scroll</p>
+    <p>more content so scroll</p>
+    <p>more content so scroll</p>
+    <p>more content so scroll</p>
+    <p>more content so scroll</p>
+    <p>more content so scroll</p>
+    <p>more content so scroll</p>
+    <p>more content so scroll</p>
+    <p>more content so scroll</p>
+    <p>more content so scroll</p>
+    <p>more content so scroll</p>
+    <p>more content so scroll</p>
+    <p>more content so scroll</p>
+    <p>more content so scroll</p>
+    <p>more content so scroll</p>
+    <p>more content so scroll2</p>
+    <p>more content so scroll</p>
+    <p>more content so scroll</p>
+    <p>more content so scroll</p>
+    <p>more content so scroll</p>
+    <p>more content so scroll</p>
+    <p>more content so scroll</p>
+    <p>more content so scroll</p>
+    <p>more content so scroll</p>
+    <p>more content so scroll</p>
+    <p>more content so scroll</p>
+    <p>more content so scroll</p>
+    <p>more content so scroll3</p>
+
+  </div>
+
+  <script src="accessible-modal-window-aria.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function(e) {
+
+    // init modals (on document ready or whenever)
+    jsModal('.js-modal')
+
+    // minimal setup, uses href hash as modalContentId
+    jsModal('.api-js-modal-a')
+
+    jsModal({
+      selector: '.api-js-modal-button',
+      modalCloseText: 'CLOSE IT! API button',
+      modalCloseTitle: 'CLOSE IT Title',
+      modalTitle: 'Title:',
+      modalContentId: 'content_id' // explicit id
+    })
+
+    jsModal({
+      selector: '.api-js-modal-pos',
+      position: true
+    })
+
+  }, false)
+
+  </script>
+
+</body>
+
+</html>
